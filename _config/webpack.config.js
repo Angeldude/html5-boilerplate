@@ -22,12 +22,12 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 use: ["source-map-loader"],
                 enforce: "pre"
             },
             {
-                test: /\.ts$/,
+                test: /\.tsx?$/,
                 loader: "ts-loader",
                 options: {
                     configFileName: "./_config/tsconfig.json"
@@ -57,6 +57,7 @@ module.exports = {
         contentBase: path.join(__dirname, "src"),
         compress: true,
         port: CommonConfig.GetDevServerPort(),
-        host: CommonConfig.GetLocalLanIp()
+        host: CommonConfig.GetLocalLanIp(),
+        historyApiFallback: true,
     }
 };
