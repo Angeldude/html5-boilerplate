@@ -10,7 +10,7 @@ module.exports = {
     entry: CommonConfig.GetWebpackEntries(process.env.NODE_ENV),
     
     resolve: {
-        extensions: ['.ts', '.tsx', '.js']
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.css']
     },
     output: {
         path: path.resolve(__dirname, '../' + CommonConfig.GetWebpackOutputFolder(process.env.NODE_ENV)),
@@ -21,6 +21,10 @@ module.exports = {
 
     module: {
         rules: [
+            {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
+      },
             {
                 test: /\.jsx?$/,
                 use: ["source-map-loader"],
